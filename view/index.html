@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+<!-- 注意：在服务端中，文件中的路径就不要去写相对路径了，因为在这个时候的所有的资源都是通过url标识来获取的
+服务器开放了 /public/ 目录，所以在这里的请求的路径都写成 /public/xx
+/ 在这里的就是url的根路径的意思，浏览器在真正请求的时候会最终把 127.0.0.1:3000拼接上 
+这里的路径，并不是文件路径， 把所有的路径都想象成url地址
+-->
+
+    <link rel="stylesheet" href="/public/bootstrap/dist/css/bootstrap.css">
+
+  </head>
+  <body>
+
+    <div class="header container">
+      <div class="page-header">
+        <h1>example page header</h1>
+        <a href="/post" class="btn btn-success">发表留言</a>
+      </div>
+    </div>
+
+    <div class="comments container">
+
+      <ul class="list-group">
+        {{each comment}}
+        <li class="list-group-item">
+          {{$value.name}}---说---：{{$value.message}}---时间--{{$value.dateTime}}
+        </li>{{/each}}
+      </ul>
+    </div>
+
+  </body>
+</html>
